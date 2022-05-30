@@ -1,5 +1,18 @@
 {% extends "school_members/base.html" %}
 
 {% block content %}
-<p>Mostrar listado de django</p>
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>nombre</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for alumno in listado %}
+            <tr>
+                <td>{{alumno.nombre}}</td>
+            </tr>
+        {% endfor%}
+    </tbody>
+</table>
 {% endblock content %}

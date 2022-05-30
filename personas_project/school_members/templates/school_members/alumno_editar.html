@@ -1,5 +1,29 @@
 {% extends "school_members/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p>Mostrar crud de django</p>
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-4">
+            {{form.DNI|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.nombre|as_crispy_field}}
+        </div>
+    </div>
+    {{form.apellidos|as_crispy_field}}
+    <div class="row">
+        <div class="col-md-4">
+            {{form.numero|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.correo|as_crispy_field}}
+        </div>
+    </div>
+    {{form.residencia|as_crispy_field}}
+    {{form.ciclo|as_crispy_field}}
+    <button class="btn btn-primary btn-succes"><i class="fa-solid fa-database"></i>Submit</button>
+
+</form>
 {% endblock content %}
