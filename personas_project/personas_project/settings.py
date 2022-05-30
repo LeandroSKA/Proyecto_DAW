@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'personas_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'schooldb',
+        'NAME': 'school_db',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'

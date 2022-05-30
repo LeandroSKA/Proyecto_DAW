@@ -8,7 +8,7 @@ class ciclo(models.Model):
         return self.nombre
 
 class profesor(models.Model):
-    DNI= models.CharField(max_length=9,primary_key=True)
+    DNI= models.CharField(max_length=9)
     nombre= models.CharField(max_length=50)
     apellidos= models.CharField(max_length=100)
     numero= models.CharField(max_length=15)
@@ -16,7 +16,7 @@ class profesor(models.Model):
     residencia= models.CharField(max_length=200)
 
 class alumno(models.Model):
-    DNI= models.CharField(max_length=9,primary_key=True)
+    DNI= models.CharField(max_length=9)
     nombre= models.CharField(max_length=50)
     apellidos= models.CharField(max_length=100)
     numero= models.CharField(max_length=15)

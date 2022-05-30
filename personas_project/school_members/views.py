@@ -8,12 +8,21 @@ def alumno_lista(request):
     context = {'listado' : alumno.objects.all()}
     return render(request, "school_members/alumno_listado.html", context)
 
-def alumno_editar(request):
+def alumno_editar(request, id=0):
     if request.method == "GET":
-        form = newPeopleForm()
+        if id==0:
+            form = newPeopleForm()
+        else:
+            alumnoi = alumno.objects.get(pk=id)
+            form = newPeopleForm(instance=alumnoi)
+
         return render(request, "school_members/alumno_editar.html",{"form": form})
     else:
-        form = newPeopleForm(request.POST)
+        if id==0:
+            form = newPeopleForm(request.POST)
+        else:
+            alumnoi = alumno.objects.get(pk=id)
+            form = newPeopleForm(request.POST, instance=alumnoi)
         if form.is_valid():
             form.save()
         return redirect('/alumno/listado')
