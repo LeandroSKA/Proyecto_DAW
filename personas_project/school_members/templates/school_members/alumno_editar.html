@@ -23,7 +23,16 @@
     </div>
     {{form.residencia|as_crispy_field}}
     {{form.ciclo|as_crispy_field}}
-    <button class="btn btn-primary btn-succes"><i class="fa-solid fa-database"></i>Submit</button>
+
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-primary btn-block btn-lg"><i class="fa-solid fa-database"></i>Submit</button>
+        </div>
+        <div class="col-md-8">
+            <a href="{% url 'alumnos_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
+        </div>
+    </div>
+
 
 </form>
 {% endblock content %}
