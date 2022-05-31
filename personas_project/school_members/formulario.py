@@ -1,13 +1,22 @@
 from dataclasses import field
 from django import forms
-from .models import alumno
+from .models import alumno, profesor
 
-class newPeopleForm(forms.ModelForm):
+class newAlumnoForm(forms.ModelForm):
 
     class Meta:
         model = alumno
         fields = "__all__"
 
     def __init__(self, *args, **kwargs):
-        super(newPeopleForm,self).__init__(*args, **kwargs)
+        super(newAlumnoForm,self).__init__(*args, **kwargs)
         self.fields['ciclo'].empty_label = "Seleccion"
+
+class newProfesorForm(forms.ModelForm):
+
+    class Meta:
+        model = profesor
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super(newProfesorForm,self).__init__(*args, **kwargs)
