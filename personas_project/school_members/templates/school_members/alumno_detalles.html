@@ -1,3 +1,16 @@
 {% extends "school_members/base.html" %}
 {% block content %}
+    
+{{data.DNI}}
+{{data.nombre}}
+{{data.apellidos}}
+{{data.numero}}
+{{data.correo}}
+{{data.residencia}}
+{{data.ciclo}}
+
+<div>
+    <a href="{% url 'alumnos_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
+</div>
+
 {% endblock content %}

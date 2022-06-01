@@ -32,8 +32,8 @@ def alumno_eliminar(request, id):
     return redirect('/alumno/listado')
 
 def alumno_detalles(request, id):
-    context = {'detalles' : alumno.objects.all()}
-    return render(request, "school_members/alumno_detalles.html", context)
+    alumnoi = alumno.objects.get(id=id) 
+    return render(request, "school_members/alumno_detalles.html", {'data':alumnoi})
 
 
 
@@ -59,14 +59,15 @@ def profesor_editar(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('/profesor/listado')
+
 def profesor_eliminar(request, id):
     profesori = profesor.objects.get(pk=id)
     profesori.delete()
     return redirect('/profesor/listado')
 
 def profesor_detalles(request, id):
-    context = {'detalles' : profesor.objects.all()}
-    return render(request, "school_members/profesor_detalles.html", context)
+    profesori = profesor.objects.get(id=id) 
+    return render(request, "school_members/profesor_detalles.html", {'data':profesori})
 
 
 
@@ -92,11 +93,12 @@ def ciclo_editar(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('/ciclo/listado')
+
 def ciclo_eliminar(request, id):
     cicloi = ciclo.objects.get(pk=id)
     cicloi.delete()
     return redirect('/ciclo/listado')
 
 def ciclo_detalles(request, id):
-    context = {'detalles' : ciclo.objects.all()}
-    return render(request, "school_members/ciclo_detalles.html", context)
+    cicloi = ciclo.objects.get(id=id) 
+    return render(request, "school_members/ciclo_detalles.html", {'data':cicloi})

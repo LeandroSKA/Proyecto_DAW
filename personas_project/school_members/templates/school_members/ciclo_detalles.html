@@ -1,3 +1,12 @@
 {% extends "school_members/base.html" %}
 {% block content %}
+    
+
+{{data.nombre}}
+
+
+<div>
+    <a href="{% url 'ciclo_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
+</div>
+
 {% endblock content %}
