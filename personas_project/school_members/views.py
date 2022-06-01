@@ -31,6 +31,10 @@ def alumno_eliminar(request, id):
     alumnoi.delete()
     return redirect('/alumno/listado')
 
+def alumno_detalles(request, id):
+    context = {'detalles' : alumno.objects.all()}
+    return render(request, "school_members/alumno_detalles.html", context)
+
 
 
 def profesor_lista(request):
@@ -60,6 +64,10 @@ def profesor_eliminar(request, id):
     profesori.delete()
     return redirect('/profesor/listado')
 
+def profesor_detalles(request, id):
+    context = {'detalles' : profesor.objects.all()}
+    return render(request, "school_members/profesor_detalles.html", context)
+
 
 
 def ciclo_lista(request):
@@ -88,3 +96,7 @@ def ciclo_eliminar(request, id):
     cicloi = ciclo.objects.get(pk=id)
     cicloi.delete()
     return redirect('/ciclo/listado')
+
+def ciclo_detalles(request, id):
+    context = {'detalles' : ciclo.objects.all()}
+    return render(request, "school_members/ciclo_detalles.html", context)

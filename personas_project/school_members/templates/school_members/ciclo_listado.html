@@ -13,8 +13,11 @@
             <tr>
                 <td>{{ciclo.nombre}}</td>
                 <td>
+                    <a href="{% url 'ciclo_detalles' ciclo.id %}" class="btn text-success px-3">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
                     <a href="{% url 'ciclo_actualizar' ciclo.id %}" class="btn text-secondary px-0">
-                        <i class="far fa-edit fa-lg"></i>
+                        <i class="far fa-edit fa-lg "></i>
                     </a>
                     <form action="{% url 'ciclo_eliminar' ciclo.id %}" method="post" class="d-inline">
                         {% csrf_token %}

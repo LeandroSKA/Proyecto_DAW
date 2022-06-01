@@ -17,6 +17,9 @@
                 <td>{{alumno.apellidos}}</td>
                 <td>{{alumno.ciclo}}</td>
                 <td>
+                    <a href="{% url 'alumno_detalles' alumno.id %}" class="btn text-success px-3">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
                     <a href="{% url 'alumnos_actualizar' alumno.id %}" class="btn text-secondary px-0">
                         <i class="far fa-edit fa-lg"></i>
                     </a>

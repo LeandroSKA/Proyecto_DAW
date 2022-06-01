@@ -15,6 +15,9 @@
                 <td>{{profesor.nombre}}</td>
                 <td>{{profesor.apellidos}}</td>
                 <td>
+                    <a href="{% url 'profesor_detalles' profesor.id %}" class="btn text-success px-3">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
                     <a href="{% url 'profesor_actualizar' profesor.id %}" class="btn text-secondary px-0">
                         <i class="far fa-edit fa-lg"></i>
                     </a>
