@@ -2,7 +2,7 @@ from django.db import models
 # Create your models here.
 
 class ciclo(models.Model):
-    nombre= models.CharField(max_length=50)
+    nombre= models.CharField(max_length=100)
 
     def __str__(self):
         return self.nombre
@@ -29,6 +29,6 @@ class alumno(models.Model):
     ciclo= models.ForeignKey(ciclo,on_delete=models.CASCADE)
 
 class asignatura(models.Model):
-    nombre= models.CharField(max_length=50)
+    nombre= models.CharField(max_length=100)
     profesor= models.ForeignKey(profesor,on_delete=models.CASCADE)
     ciclo= models.ForeignKey(ciclo,on_delete=models.CASCADE)

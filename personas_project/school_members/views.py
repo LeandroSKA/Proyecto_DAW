@@ -107,7 +107,7 @@ def ciclo_detalles(request, id):
 
 
 def asignatura_lista(request):
-    context = {'listado' : asignatura.objects.all()}
+    context = {'listado' : asignatura.objects.all().order_by('ciclo')}
     return render(request, "school_members/asignatura_listado.html", context)
 
 def asignatura_editar(request, id=0):
