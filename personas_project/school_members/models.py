@@ -15,6 +15,10 @@ class profesor(models.Model):
     correo= models.CharField(max_length=100)
     residencia= models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.nombre
+    
+
 class alumno(models.Model):
     DNI= models.CharField(max_length=9)
     nombre= models.CharField(max_length=50)

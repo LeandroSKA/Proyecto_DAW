@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('alumno/', include('school_members.urlsalumno')),
     path('ciclo/', include('school_members.urlsciclo')),
-    path('profesor/', include('school_members.urlsprofesor'))
+    path('profesor/', include('school_members.urlsprofesor')),
+    path('asignatura/', include('school_members.urlsasignatura'))
 ]

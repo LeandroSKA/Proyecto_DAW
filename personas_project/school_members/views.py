@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from .formulario import newAlumnoForm, newProfesorForm, newCicloForm
-from .models import alumno, profesor, ciclo
+from .formulario import newAlumnoForm, newProfesorForm, newCicloForm, newAsignaturaForm
+from .models import alumno, profesor, ciclo, asignatura
 
 # Create your views here.
 
 def alumno_lista(request):
-    context = {'listado' : alumno.objects.all()}
+    context = {'listado' : alumno.objects.all().order_by('apellidos')}
     return render(request, "school_members/alumno_listado.html", context)
 
 def alumno_editar(request, id=0):
@@ -38,7 +38,7 @@ def alumno_detalles(request, id):
 
 
 def profesor_lista(request):
-    context = {'listado' : profesor.objects.all()}
+    context = {'listado' : profesor.objects.all().order_by('apellidos')}
     return render(request, "school_members/profesor_listado.html", context)
 
 def profesor_editar(request, id=0):
@@ -72,7 +72,7 @@ def profesor_detalles(request, id):
 
 
 def ciclo_lista(request):
-    context = {'listado' : ciclo.objects.all()}
+    context = {'listado' : ciclo.objects.all().order_by('nombre')}
     return render(request, "school_members/ciclo_listado.html", context)
 
 def ciclo_editar(request, id=0):
@@ -100,5 +100,64 @@ def ciclo_eliminar(request, id):
     return redirect('/ciclo/listado')
 
 def ciclo_detalles(request, id):
-    cicloi = ciclo.objects.get(id=id) 
-    return render(request, "school_members/ciclo_detalles.html", {'data':cicloi})
+    mydata = asignatura.objects.filter(ciclo=id).values()
+    context = {'mymembers': mydata,}
+    return render(request, "school_members/ciclo_detalles.html", context)
+
+
+
+def asignatura_lista(request):
+    context = {'listado' : asignatura.objects.all()}
+    return render(request, "school_members/asignatura_listado.html", context)
+
+def asignatura_editar(request, id=0):
+    if request.method == "GET":
+        if id==0:
+            form = newAsignaturaForm()
+        else:
+            asignaturai = asignatura.objects.get(pk=id)
+            form = newAsignaturaForm(instance=asignaturai)
+
+        return render(request, "school_members/asignatura_editar.html",{"form": form})
+    else:
+        if id==0:
+            form = newAsignaturaForm(request.POST)
+        else:
+            asignaturai = asignatura.objects.get(pk=id)
+            form = newAsignaturaForm(request.POST, instance=asignaturai)
+        if form.is_valid():
+            form.save()
+        return redirect('/asignatura/listado')
+
+def asignatura_eliminar(request, id):
+    asignaturai = asignatura.objects.get(pk=id)
+    asignaturai.delete()
+    return redirect('/asignatura/listado')
+
+
+
+
+
+
+
+
+
+
+def ciclo_detalles_editar(request, id=0):
+    if request.method == "GET":
+        if id==0:
+            form = newAsignaturaForm()
+        else:
+            asignaturai = asignatura.objects.get(pk=id)
+            form = newAsignaturaForm(instance=asignaturai)
+
+        return render(request, "school_members/ciclo_detalles_editar.html",{"form": form})
+    else:
+        if id==0:
+            form = newAsignaturaForm(request.POST)
+        else:
+            asignaturai = asignatura.objects.get(pk=id)
+            form = newAsignaturaForm(request.POST, instance=asignaturai)
+        if form.is_valid():
+            form.save()
+        return redirect('/ciclo/detalles')
