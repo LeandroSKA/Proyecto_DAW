@@ -1,6 +1,6 @@
 from dataclasses import field
 from django import forms
-from .models import alumno, profesor
+from .models import alumno, profesor, ciclo
 
 class newAlumnoForm(forms.ModelForm):
 
@@ -20,3 +20,12 @@ class newProfesorForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(newProfesorForm,self).__init__(*args, **kwargs)
+
+class newCicloForm(forms.ModelForm):
+
+    class Meta:
+        model = ciclo
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super(newCicloForm,self).__init__(*args, **kwargs)

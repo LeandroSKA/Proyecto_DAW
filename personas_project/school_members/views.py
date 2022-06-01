@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .formulario import newAlumnoForm, newProfesorForm
-from .models import alumno, profesor
+from .formulario import newAlumnoForm, newProfesorForm, newCicloForm
+from .models import alumno, profesor, ciclo
 
 # Create your views here.
 
@@ -59,3 +59,32 @@ def profesor_eliminar(request, id):
     profesori = profesor.objects.get(pk=id)
     profesori.delete()
     return redirect('/profesor/listado')
+
+
+
+def ciclo_lista(request):
+    context = {'listado' : ciclo.objects.all()}
+    return render(request, "school_members/ciclo_listado.html", context)
+
+def ciclo_editar(request, id=0):
+    if request.method == "GET":
+        if id==0:
+            form = newCicloForm()
+        else:
+            cicloi = ciclo.objects.get(pk=id)
+            form = newCicloForm(instance=cicloi)
+
+        return render(request, "school_members/ciclo_editar.html",{"form": form})
+    else:
+        if id==0:
+            form = newCicloForm(request.POST)
+        else:
+            cicloi = ciclo.objects.get(pk=id)
+            form = newCicloForm(request.POST, instance=cicloi)
+        if form.is_valid():
+            form.save()
+        return redirect('/ciclo/listado')
+def ciclo_eliminar(request, id):
+    cicloi = ciclo.objects.get(pk=id)
+    cicloi.delete()
+    return redirect('/ciclo/listado')
