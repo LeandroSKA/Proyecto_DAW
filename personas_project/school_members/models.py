@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from pickle import TRUE
 from django.db import models
 # Create your models here.
 
@@ -14,7 +16,7 @@ class profesor(models.Model):
     numero= models.CharField(max_length=15)
     correo= models.CharField(max_length=100)
     residencia= models.CharField(max_length=200)
-
+    foto = models.ImageField(null=True, blank=True, upload_to= "profesores/")
     def __str__(self):
         return self.nombre
     
@@ -26,6 +28,7 @@ class alumno(models.Model):
     numero= models.CharField(max_length=15)
     correo= models.CharField(max_length=100)
     residencia= models.CharField(max_length=200)
+    foto = models.ImageField(null=True, blank=True, upload_to= "alunnos/")
     ciclo= models.ForeignKey(ciclo,on_delete=models.CASCADE)
 
 class asignatura(models.Model):

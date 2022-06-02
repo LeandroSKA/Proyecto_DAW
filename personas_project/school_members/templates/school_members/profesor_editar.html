@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<form action="" method="post" autocomplete="off">
+<form action="" method="post" autocomplete="off" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row">
         <div class="col-md-4">
@@ -22,6 +22,7 @@
         </div>
     </div>
     {{form.residencia|as_crispy_field}}
+    {{form.foto|as_crispy_field}}
 
     <div class="row">
         <div class="col-md-4">

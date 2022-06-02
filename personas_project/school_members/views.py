@@ -19,10 +19,10 @@ def alumno_editar(request, id=0):
         return render(request, "school_members/alumno_editar.html",{"form": form})
     else:
         if id==0:
-            form = newAlumnoForm(request.POST)
+            form = newAlumnoForm(request.POST, request.FILES)
         else:
             alumnoi = alumno.objects.get(pk=id)
-            form = newAlumnoForm(request.POST, instance=alumnoi)
+            form = newAlumnoForm(request.POST,request.FILES, instance=alumnoi)
         if form.is_valid():
             form.save()
         return redirect('/alumno/listado')
@@ -52,10 +52,10 @@ def profesor_editar(request, id=0):
         return render(request, "school_members/profesor_editar.html",{"form": form})
     else:
         if id==0:
-            form = newProfesorForm(request.POST)
+            form = newProfesorForm(request.POST, request.FILES)
         else:
             profesori = profesor.objects.get(pk=id)
-            form = newProfesorForm(request.POST, instance=profesori)
+            form = newProfesorForm(request.POST,request.FILES, instance=profesori)
         if form.is_valid():
             form.save()
         return redirect('/profesor/listado')
