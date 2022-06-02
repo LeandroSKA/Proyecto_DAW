@@ -5,6 +5,7 @@
 <form action="" method="post" autocomplete="off">
     {% csrf_token %}
     {{form.nombre|as_crispy_field}}
+    {{form.horas|as_crispy_field}}
     {{form.profesor|as_crispy_field}}
     {{form.ciclo|as_crispy_field}}
 

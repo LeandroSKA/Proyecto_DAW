@@ -11,10 +11,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="col-md-10 offset-md-1-mt-5">
+        <div class="col-md">
             <div class="jumbotron">
-
                 {% block content %}
+                    <div class="col-md">
+                        <div>
+                            <a href="{% url 'ciclo_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
+                        </div>
+                    </div>
                 {% endblock content %}
               </div>
         </div>

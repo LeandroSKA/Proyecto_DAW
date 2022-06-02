@@ -30,5 +30,6 @@ class alumno(models.Model):
 
 class asignatura(models.Model):
     nombre= models.CharField(max_length=100)
+    horas = models.IntegerField(default=0)
     profesor= models.ForeignKey(profesor,on_delete=models.CASCADE)
     ciclo= models.ForeignKey(ciclo,on_delete=models.CASCADE)

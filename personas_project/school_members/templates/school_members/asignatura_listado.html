@@ -6,7 +6,9 @@
         <tr>
             <td>Nombre</td>
             <td>Profesor</td>
+            <td>Horas</td>
             <td>Ciclo</td>
+            
             <td><a href="{% url 'asignatura_insertar' %}" class="btn btn-outline-success"><i class="fas fa-plus"></i>Añadir</a></td>
         </tr>
     </thead>
@@ -15,7 +17,9 @@
             <tr>
                 <td>{{asignatura.nombre}}</td>
                 <td>{{asignatura.profesor}}</td>
+                <td>{{asignatura.horas}}</td>
                 <td>{{asignatura.ciclo}}</td>
+                
                 <td>
                     <a href="{% url 'asignatura_actualizar' asignatura.id %}" class="btn text-secondary px-0">
                         <i class="far fa-edit fa-lg "></i>
