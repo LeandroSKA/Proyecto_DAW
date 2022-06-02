@@ -7,10 +7,19 @@
 {{data.numero}}
 {{data.correo}}
 {{data.residencia}}
-
+<br>
 {% if data.foto %}
 <img src="{{data.foto.url}}" alt="foto_alumno" width="500px">
 {% endif %}
+
+<h1>s</h1>
+
+{% for asignatura in data2 %}
+<tr>
+    <td>{{ asignatura.nombre }}</td>
+</tr>
+{% endfor %}
+
 
 <div>
     <a href="{% url 'profesor_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>

@@ -66,8 +66,9 @@ def profesor_eliminar(request, id):
     return redirect('/profesor/listado')
 
 def profesor_detalles(request, id):
+    asignaturai = asignatura.objects.filter(profesor=id).values()
     profesori = profesor.objects.get(id=id) 
-    return render(request, "school_members/profesor_detalles.html", {'data':profesori})
+    return render(request, "school_members/profesor_detalles.html", {'data':profesori, 'data2':asignaturai})
 
 
 
@@ -100,9 +101,8 @@ def ciclo_eliminar(request, id):
     return redirect('/ciclo/listado')
 
 def ciclo_detalles(request, id):
-    mydata = asignatura.objects.filter(ciclo=id).values()
-    context = {'mymembers': mydata,}
-    return render(request, "school_members/ciclo_detalles.html", context)
+    asignaturai = asignatura.objects.filter(ciclo=id).values()
+    return render(request, "school_members/ciclo_detalles.html",{'data':asignaturai} )
 
 
 
@@ -134,30 +134,3 @@ def asignatura_eliminar(request, id):
     asignaturai.delete()
     return redirect('/asignatura/listado')
 
-
-
-
-
-
-
-
-
-
-def ciclo_detalles_editar(request, id=0):
-    if request.method == "GET":
-        if id==0:
-            form = newAsignaturaForm()
-        else:
-            asignaturai = asignatura.objects.get(pk=id)
-            form = newAsignaturaForm(instance=asignaturai)
-
-        return render(request, "school_members/ciclo_detalles_editar.html",{"form": form})
-    else:
-        if id==0:
-            form = newAsignaturaForm(request.POST)
-        else:
-            asignaturai = asignatura.objects.get(pk=id)
-            form = newAsignaturaForm(request.POST, instance=asignaturai)
-        if form.is_valid():
-            form.save()
-        return redirect('/ciclo/detalles')

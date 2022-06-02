@@ -4,11 +4,11 @@
 
 
 
-{% for asignatura in mymembers %}
-<tr>
-    <td>{{ asignatura.nombre }}</td>
-    <td>{{ asignatura.horas }}</td><br>
-</tr>
+{% for asignatura in data %}
+
+    <h2>{{ asignatura.nombre }}</h2>
+    <h2>{{ asignatura.horas }}</h2>
+
 {% endfor %}
 <div>
     <a href="{% url 'ciclo_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
