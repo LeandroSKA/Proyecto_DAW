@@ -1,23 +1,27 @@
+
+
 {% extends "school_members/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block content %}
-<form action="" method="post" autocomplete="off">
-    {% csrf_token %}
-    {{form.nombre|as_crispy_field}}
-    {{form.horas|as_crispy_field}}
-    {{form.profesor|as_crispy_field}}
-    {{form.ciclo|as_crispy_field}}
 
-    <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-primary btn-block btn-lg"><i class="fa-solid fa-database"></i>Submit</button>
-        </div>
-        <div>
-            <a href="{% url 'asignatura_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
-        </div>
+<div class="container">
+    <h1 class="display-4 mb-4">Añadir asignatura</h1>
+    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.nombre|as_crispy_field}}
+        {{form.horas|as_crispy_field}}
+        {{form.profesor|as_crispy_field}}
+        {{form.ciclo|as_crispy_field}}
+        <button class="btn w-100 btn-dark mt-2">Añadir</button>
+        <a href="{% url 'asignatura_listado' %}" class="btn w-100 btn-dark mt-2">Volver</a>
+
+    </form> 
+
+</div>
+<div style="z-index: -1;" class="jumbotron jumbotron-fluid fixed-bottom mb-0">
+    <div class="container">
+
     </div>
+</div>
 
-
-</form>
 {% endblock content %}

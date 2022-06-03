@@ -26,6 +26,7 @@ def alumno_editar(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('/alumno/listado')
+        
 def alumno_eliminar(request, id):
     alumnoi = alumno.objects.get(pk=id)
     alumnoi.delete()

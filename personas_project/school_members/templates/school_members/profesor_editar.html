@@ -1,38 +1,42 @@
+
 {% extends "school_members/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block content %}
-<form action="" method="post" autocomplete="off" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="row">
-        <div class="col-md-4">
-            {{form.DNI|as_crispy_field}}
-        </div>
-        <div class="col-md-8">
-            {{form.nombre|as_crispy_field}}
-        </div>
-    </div>
-    {{form.apellidos|as_crispy_field}}
-    <div class="row">
-        <div class="col-md-4">
-            {{form.numero|as_crispy_field}}
-        </div>
-        <div class="col-md-8">
-            {{form.correo|as_crispy_field}}
-        </div>
-    </div>
-    {{form.residencia|as_crispy_field}}
-    {{form.foto|as_crispy_field}}
 
-    <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-primary btn-block btn-lg"><i class="fa-solid fa-database"></i>Submit</button>
+<div class="container">
+    <h1 class="display-4 mb-4">Añadir profesor</h1>
+    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4">
+                {{form.DNI|as_crispy_field}}
+            </div>
+            <div class="col-md-8">
+                {{form.nombre|as_crispy_field}}
+            </div>
         </div>
-        <div class="col-md-8">
-            <a href="{% url 'profesor_listado' %}" class="btn btn-secondary btn-block btn-lg"><i class="fas fa-stream"></i>Volver</a>
+        {{form.apellidos|as_crispy_field}}
+        <div class="row">
+            <div class="col-md-4">
+                {{form.numero|as_crispy_field}}
+            </div>
+            <div class="col-md-8">
+                {{form.correo|as_crispy_field}}
+            </div>
         </div>
+        {{form.residencia|as_crispy_field}}
+        {{form.foto|as_crispy_field}}
+
+        <button class="btn w-100 btn-dark mt-2">Añadir</button>
+        <a href="{% url 'profesor_listado' %}" class="btn w-100 btn-dark mt-2">Volver</a>
+
+    </form> 
+
+</div>
+<div style="z-index: -1;" class="jumbotron jumbotron-fluid fixed-bottom mb-0">
+    <div class="container">
+
     </div>
+</div>
 
-
-</form>
 {% endblock content %}

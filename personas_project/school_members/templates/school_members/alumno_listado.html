@@ -1,35 +1,68 @@
 {% extends "school_members/base.html" %}
 
 {% block content %}
-<table class="table table-borderless">
-    <thead class="border-bottom font-weight-bold">
-        <tr>
-            <td>Nombre</td>
-            <td>Apellidos</td>
-            <td>Ciclo</td>
-            <td><a href="{% url 'alumnos_insertar' %}" class="btn btn-outline-success"><i class="fas fa-plus"></i>Añadir</a></td>
-        </tr>
-    </thead>
-    <tbody>
-        {% for alumno in listado %}
-            <tr>
-                <td>{{alumno.nombre}}</td>
-                <td>{{alumno.apellidos}}</td>
-                <td>{{alumno.ciclo}}</td>
-                <td>
-                    <a href="{% url 'alumno_detalles' alumno.id %}" class="btn text-success px-3">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                    <a href="{% url 'alumnos_actualizar' alumno.id %}" class="btn text-secondary px-0">
-                        <i class="far fa-edit fa-lg"></i>
-                    </a>
-                    <form action="{% url 'alumnos_eliminar' alumno.id %}" method="post" class="d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn"><i class="far fa-trash-alt fa-lg text-danger float-right"></i></button>
-                    </form>
-                </td>
-            </tr>
-        {% endfor%}
-    </tbody>
-</table>
-{% endblock content %}
+
+    <div class="container">
+        <h1 class="display-4 mb-4">Alumnos</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Ciclo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {% for alumno in listado %}
+                <tr>
+                    <td class="align-middle">{{alumno.nombre}}</td>
+                    <td class="align-middle">{{alumno.apellidos}}</td>
+                    <td class="align-middle">{{alumno.ciclo}}</td>
+                    <td class="float-right">
+                      <a href="{% url 'alumno_detalles' alumno.id %}" class="btn w-75 btn-dark d-inline">Detalles</a>
+                      <a href="{% url 'alumnos_actualizar' alumno.id %}" class="btn w-75 btn-dark d-inline">Editar</a>
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{alumno.id}}">
+                        Eliminar
+                      </button>
+                    </td>
+
+                    <div class="modal fade" id="{{alumno.id}}" tabindex="-1" role="dialog" aria-labelledby="{{alumno.id}}" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Eliminar alumno</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body text-center">
+                            ¿Desea eliminar al alumno <br> <strong>{{alumno.nombre}} {{alumno.apellidos}}</strong>?
+                          </div>
+                          <div class="modal-footer">
+                            <form action="{% url 'alumnos_eliminar' alumno.id %}" method="post">
+                              {% csrf_token %}
+                              <button type="submit" class="btn w-75 btn-danger">Eliminar</button>
+                          </form>
+                          <button type="button" class="btn w-75 btn-dark" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </tr>
+            {% endfor%}
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+    <div class="jumbotron jumbotron-fluid fixed-bottom mb-0">
+        <div class="container">
+            <a href="{% url 'alumnos_insertar' %}" class="btn w-100 btn-dark">Añadir</a>
+        </div>
+    </div>
+
+
+  {% endblock content %}
+
