@@ -1,37 +1,35 @@
 
-{% extends "school_members/base.html" %}
-
-{% block content %}
-
-    <div class="container">
-        <h4 class="display-8 mb-4">Asignaturas</h4>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Horas</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {% for asignatura in data %}
-                <tr>
-                    <td class="align-middle">{{asignatura.nombre}}</td>
-                    <td class="align-middle">{{asignatura.horas}}</td>
-                </tr>
-            {% endfor%}
-              </tr>
-            </tbody>
-          </table>
+  {% extends "school_members/base.html" %}
+  {% block content %}
+      
+  <div class="container">
+  
+          <div class="row">
+              <div class="col-sm">
+                <h3>Asignaturas</h3>
+                <ul class="list-group list-group-flush">
+                  {% for asignatura in data %}
+                  <li class="list-group-item"><span class="text-success">{{asignatura.nombre}} - {{asignatura.horas}} h</span></li>
+                  {% endfor%}
+                </ul>
+              </div>
+              <div class="col-sm mx-auto  d-block ">
+                <h3>Alumnos</h3>
+                  <ul class="list-group list-group-flush">
+                    {% for alumno in data2 %}
+                      <li class="list-group-item"><span class="text-success">{{alumno.nombre}} {{alumno.apellidos}}</span></li>
+                    {% endfor%}
+                  </ul>
+              </div>
+              <a href="{% url 'ciclo_listado' %}" class="btn w-100 mt-5 btn-dark">Volver</a>
+          </div>
+  
+  </div>
+  
+  <div class="jumbotron jumbotron-fluid fixed-bottom mb-0">
+      <div class="container">
           
-    </div>
-    <div class="jumbotron jumbotron-fluid fixed-bottom mb-0">
-        <div class="container">
-            <a href="{% url 'ciclo_listado' %}" class="btn w-100 btn-dark">Volver</a>
-        </div>
-    </div>
-
-
+      </div>
+  </div>
+  
   {% endblock content %}
-

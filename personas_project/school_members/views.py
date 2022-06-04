@@ -102,8 +102,9 @@ def ciclo_eliminar(request, id):
     return redirect('/ciclo/listado')
 
 def ciclo_detalles(request, id):
+    alumnosi = alumno.objects.filter(ciclo=id).values()
     asignaturai = asignatura.objects.filter(ciclo=id).values()
-    return render(request, "school_members/ciclo_detalles.html",{'data':asignaturai} )
+    return render(request, "school_members/ciclo_detalles.html",{'data':asignaturai, 'data2':alumnosi} )
 
 
 
@@ -135,3 +136,6 @@ def asignatura_eliminar(request, id):
     asignaturai.delete()
     return redirect('/asignatura/listado')
 
+
+def pagina_principal(request):
+    return render(request, "school_members/main.html")
