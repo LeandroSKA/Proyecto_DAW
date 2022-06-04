@@ -21,7 +21,9 @@ from school_members import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.pagina_principal, name='main'),
+    path('', views.login_user, name='login'),
+    path('', views.logout_user, name='logout'),
+    path('', include('django.contrib.auth.urls')),
     path('alumno/', include('school_members.urlsalumno')),
     path('ciclo/', include('school_members.urlsciclo')),
     path('profesor/', include('school_members.urlsprofesor')),
