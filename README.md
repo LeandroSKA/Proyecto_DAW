@@ -4,9 +4,13 @@ Proyecto final de DAW
 Se requiere:
 
 pip install django
+
 pip install pillow
+
 pip install django-crispy-forms
+
 pip install psycopg2
+
 
 Acceder a la ruta donde está el archivo el manage.py y ejecutar por consola:
 
