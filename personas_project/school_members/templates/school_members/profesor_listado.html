@@ -10,6 +10,7 @@
               <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellidos</th>
+                <th scope="col float-right"><a href="{% url 'profesor_insertar' %}" class="btn w-25 btn-dark float-right">Añadir</a></th>
                 <th></th>
               </tr>
             </thead>
@@ -56,11 +57,7 @@
           </table>
           
     </div>
-    <div class="jumbotron jumbotron-fluid fixed-bottom mb-0">
-        <div class="container">
-            <a href="{% url 'profesor_insertar' %}" class="btn w-100 btn-dark">Añadir</a>
-        </div>
-    </div>
+
 
 
   {% endblock content %}
