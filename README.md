@@ -16,6 +16,9 @@ Acceder a la ruta donde está el archivo el manage.py y ejecutar por consola:
 
 python manage.py runserver
 
+usuario: admin
+pass: 1234
+
 Capturas:
 
 ![image](https://user-images.githubusercontent.com/106404894/172028107-c2da6a0f-5002-4be0-bf05-534f40eccc51.png)
